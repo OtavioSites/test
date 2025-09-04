@@ -8,24 +8,39 @@
 </head>
 <body>
     <div id="container">
-    <form action="processa_user.php" method="POST">
+    <form action="salvar.php" method="POST">
+    <h1>Formulário</h1>
+    <div>
     <label for="produto">Produto: </label>
     <input type="text" name="produto" id="produto">
+    </div><div>
     <label for="quant">Quantidade: </label>    
-    <input type="number" name="quant" id="quant">        
+    <input type="number" name="quant" id="quant">
+    </div><div>     
     <label for="preco">Preço: </label>
-    <input type="text" name="preco" id="preco">
+    <input type="text" name="preco" id="preco" placeholder="R$ 00,00">
+    </div>   
     <script>
-        let preco = document.getElementById("preco")
+    let preco = document.getElementById("preco")
 
     function regex(valor){
-
-    valor = valor.value.replace(/\D/g, "")
+    
+    valor = valor.value.replace(/\D/g, "");
+    
+    let valorLength = valor.length -2;
+    console.log(valorLength);
+    let valorCent = valor.slice(-2);
+    
+    valorCent = valorCent.replace(/(\d{2})/g, ",$1");
+    console.log(valorCent)
+    valor = valor.slice(0, valorLength)
+    
     let regex = /(\d)(?=(\d{3})+(?!\d))/g;
-    if(regex.test(valor)){
+    
+    
         valor = valor.replace(regex, "$1.");
-        return valor = "R$" + valor;
-    }
+        return valor = "R$ " + valor + valorCent;
+
 
 }
 preco.addEventListener("blur", function(){
@@ -36,7 +51,7 @@ preco.addEventListener("blur", function(){
     <button type="submit">Enviar</button>
     
 </form>
-    <table border="1">
+    <table border="1" border-radius="2">
         <thead>
         <tr>
             <th></th>
@@ -45,13 +60,34 @@ preco.addEventListener("blur", function(){
             <th>Quantidade</th>
         </tr>
         </thead>
-    </table>
+    
     <tbody>
         <?php
+        $arquivo = "dados.json";
+            
+                if(file_exists($arquivo)){
+                    $conteudoJson = file_get_contents($arquivo);
 
+                    $dados = json_decode($conteudoJson, true);
+
+                    if($dados && count($dados) > 0){
+                        foreach($dados as $indice => $usuario){
+                            echo "<tr>
+                                    <td>" . $indice + 1 . "</td>
+                                    <td>" . htmlspecialchars($usuario['nome']) ."</td>
+                                    <td>" . htmlspecialchars($usuario['preco']) ."</td>
+                                    <td>" . htmlspecialchars($usuario['quant']) ."</td>";
+                        }
+                    }else{
+                        echo "<td colspan ='4'>Não tem informações</td>";
+                    }
+                }else{
+                    echo "<td colspan ='4'>Não tem informações</td>";
+                }
+            
         ?>
     </tbody>
-    
+    </table>
     
     
 

@@ -4,9 +4,15 @@ function regex(valor){
 
     valor = valor.value.replace(/\D/g, "")
     let regex = /(?=\d{3}?)+?(\d{3})+(\d{3})/g;
+    let valorLength = valor.length -2;
+    
+    valor = valor.replace(valorLength, ",");
+    
+    
     if(regex.test(valor)){
         valor = valor.replace(regex, "$1.");
-        return "R$" + valor;
+        
+        return "R$ " + valor;
     }
 
 }
