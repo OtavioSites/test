@@ -3,5 +3,15 @@
         "preco": "R$ 545,55",
         "nome": "P\u00e3o",
         "quant": "5"
+    },
+    {
+        "preco": "R$ 43,44",
+        "nome": "rr",
+        "quant": "33"
+    },
+    {
+        "preco": "R$ 565,65",
+        "nome": "yy",
+        "quant": "66"
     }
 ]

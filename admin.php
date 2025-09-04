@@ -22,17 +22,21 @@
                 $arquivo = "dados.json";
 
                 if(file_exists($arquivo)){
-                    $conteudoJson = file_get_contents($arquivo);
+                    $conteudoJson = file_get_contents($arquivo); 
                     $dados = json_decode($conteudoJson, true);
                 }
 
+                $dados = unset(, 2);
                 foreach($dados as $indice => $usuario){
                     echo "
+                    <div id='pedido'>
                     <div class='cont'><h2>" . htmlspecialchars($usuario['nome']) . "</h2></div>
                     <div class='cont'><h2>" . htmlspecialchars($usuario['preco']) . "</h2></div>
                     <div class='cont'><h2>" . htmlspecialchars($usuario['quant']) . "</h2></div>
-                    <div class='cont'><button type='button'>Deletar</button></div>";
+                    <div class='cont'><button type='button'>Deletar</button></div></div>";
+                
                 };
+               
             
             
             

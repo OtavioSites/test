@@ -64,11 +64,17 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 50px;
-    
+    flex-direction: column;
     max-height: max-content;
     border: 2px solid rgb(0, 85, 119);
 }
-
+#pedido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+}
 .cont{
     display: flex;
     width: max-content;
@@ -81,9 +87,16 @@ body{
 }
 button{
     width: 100px;
-    height: 50px;
-    font-size: 1rem;
+    height: 40px;
+    font-size: 1.2rem;
     border-radius: 10px;
     border: 0;
+    cursor: pointer;
+    color: white;
+    
+    background-color: blue;
+    &:hover{
+        background-color: rgb(89, 89, 245);
+    }
 }
 
