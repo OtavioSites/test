@@ -51,7 +51,7 @@ preco.addEventListener("blur", function(){
     <button type="submit">Enviar</button>
     
 </form>
-    <table border="1" border-radius="2">
+    <table border="1">
         <thead>
         <tr>
             <th></th>
@@ -76,7 +76,7 @@ preco.addEventListener("blur", function(){
                                     <td>" . $indice + 1 . "</td>
                                     <td>" . htmlspecialchars($usuario['nome']) ."</td>
                                     <td>" . htmlspecialchars($usuario['preco']) ."</td>
-                                    <td>" . htmlspecialchars($usuario['quant']) ."</td>";
+                                    <td>" . htmlspecialchars($usuario['quant']) ."</td></tr>";
                         }
                     }else{
                         echo "<td colspan ='4'>Não tem informações</td>";

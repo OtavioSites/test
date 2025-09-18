@@ -28,61 +28,49 @@ body{
     justify-content: center;
     align-items: center;
 }
-#tabela{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+table{
+    
+
     border: solid 2px gray;
-    width: 80%;
-    min-height: 500px;
-    max-height: max-content;
+    
+    
+    
     
 }
 
 #header{
-    display: flex;
+   
     width: 100%;
     height: max-content;
-    justify-content: center;
-    align-items: center;
+    
     border: 2px solid green;
 }
 .head{
     width: max-content;
-    padding: 0 3rem 0 3rem;
-    display: flex;
+    
+    padding: 0 2rem 0 2rem;
     font-size: 1.3rem;
-    justify-content: center;
-    align-items: center;
+   
     height: 60px;
     border: 1px red solid;
 }
 #content{
-    display: flex;
+    
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    min-height: 50px;
-    flex-direction: column;
-    max-height: max-content;
+   
+    
+   
+    
     border: 2px solid rgb(0, 85, 119);
 }
-#pedido{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    height: max-content;
-}
+
 .cont{
-    display: flex;
+
     width: max-content;
-    padding: 0 3rem 0 3rem;
-    justify-content: center;
-    align-items: center;
+    
+   
     font-size: 0.9rem;
-    height: 50px;
+    height: 10px;
     border: 2px solid red;
 }
 button{
