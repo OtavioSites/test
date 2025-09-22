@@ -1,14 +1,46 @@
-document.querySelectorAll("button").forEach((e) => {
-    e.addEventListener("submit", function(){
-        let indiceBtn = e.className;
-        let tr = document.querySelectorAll("tr")[indiceBtn];
-        if(indiceBtn === tr.length){
-            let cont = document.querySelectorAll("cont > h2")[2].innerHTML;
-            const arquivo = "admin.json";
-            JSON.stringify("nome", cont)
+try {
+  const botao = document.querySelectorAll("button");
+
+ botao.forEach((e) => {
+    
+    e.addEventListener("click", function(event){
+        
+        let indiceBtn =  event.target;
+        let indice = Array.from(botao).indexOf(indiceBtn);
+        
+    
+        console.log(indice)
+        
+        if(indice !== -1){
+            let tr = document.querySelectorAll("tr")[indice];
             
+            let nome = document.querySelectorAll(".nome")[indice].textContent;
+            let preco = document.querySelectorAll(".preco")[indice].textContent;
+            let quant = document.querySelectorAll(".quant")[indice].textContent;
+            
+            console.log(typeof indice)
+            let info = {
+                "indice": indice,
+                "nome": nome,
+                "preco": preco,
+                "quant": quant,
+            }
+            fetch("testPHP.php", {
+                method: "POST",
+                headers: {
+                'Content-Type': 'application/json' // Indica que o corpo é JSON
+                },
+                body: JSON.stringify(info),
+                }
+                
+    ).then((response) =>  {
+        return response.text()}
+    )        
         }
 
     })
 
 })
+} catch (error) {
+    console.log(Error.error);
+}

@@ -1,3 +1,8 @@
+<?php
+    include 'testPHP.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +14,7 @@
 <body>
     <div id="container">
         <h1>Histórico</h1>
-        <?php
-        $arquivo = "dados.json";
-           if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            
-               if(file_exists($arquivo)){
-                    $conteudoJson = file_get_contents($arquivo); 
-                    $dados = json_decode($conteudoJson, true);
-                }
-               foreach ($dados as $i => $pessoa) {
-                    if($pessoa["nome"]){
-                        unset($dados[$i]);
-                    }
-                }
-                $dados = json_encode($dados, JSON_PRETTY_PRINT);
-                file_put_contents($arquivo, $dados);
-
-                header("Location: admin.php");
-            }
-
-        ?>
+        
         <table border='2'>
             <thead id="header">
             <tr>
@@ -54,10 +40,10 @@
                     echo "
                     <tr>
                     <td class='cont' rowspan='1'><h2>" . $indice . "</h2></td>
-                    <td class='cont' rowspan='1'><h2>" . htmlspecialchars($usuario['nome']) . "</h2></td>
-                    <td class='cont' rowspan='1'><h2>" . htmlspecialchars($usuario['preco']) . "</h2></td>
-                    <td class='cont' rowspan='1'><h2>" . htmlspecialchars($usuario['quant']) . "</h2></td>
-                    <td class='cont' rowspan='1'><form action='admin.php' method='POST'><button type='submit' class='" . $indice . "'>Deletar</button></form></td></tr>";
+                    <td class='cont' rowspan='1'><h2 class='nome'>" . htmlspecialchars($usuario['nome']) . "</h2></td>
+                    <td class='cont' rowspan='1'><h2 class='preco'>" . htmlspecialchars($usuario['preco']) . "</h2></td>
+                    <td class='cont' rowspan='1'><h2 class='quant'>" . htmlspecialchars($usuario['quant']) . "</h2></td>
+                    <td class='cont' rowspan='1'><form action='testPHP.php' method='POST'><button type='submit'>Deletar</button></form></td></tr>";
                 
                 };
                 
