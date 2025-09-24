@@ -15,7 +15,7 @@
     <div id="container">
         <h1>Histórico</h1>
         
-        <table border='2'>
+        <table cellspacing='0'>
             <thead id="header">
             <tr>
             <th class="head">#</th>
@@ -25,7 +25,7 @@
             <th class="head">Del</th>
             </tr>
             </thead>
-            
+           
         <tbody id="content">
             <?php
                 $arquivo = "dados.json";
@@ -35,7 +35,7 @@
                     $dados = json_decode($conteudoJson, true);
                 }
                 
-                    
+                if($dados && count($dados) > 0){
                 foreach($dados as $indice => $usuario){
                     echo "
                     <tr>
@@ -46,6 +46,9 @@
                     <td class='cont' rowspan='1'><form action='testPHP.php' method='POST'><button type='submit'>Deletar</button></form></td></tr>";
                 
                 };
+            }else{
+                echo "<td colspan='5' style='font-weight: bolder; padding: 15px;'>Não possui nenhum registro</td>";
+            }
                 
                
             
@@ -53,7 +56,7 @@
             
             ?>
         </tbody>
-        </table>
+        </table> 
     </div>
 
 

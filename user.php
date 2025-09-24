@@ -47,6 +47,10 @@ preco.addEventListener("blur", function(){
     preco.value = regex(preco)
 
 })
+preco.addEventListener("input", function(){
+    preco.value = regex(preco)
+
+})
     </script>
     <button type="submit">Enviar</button>
     

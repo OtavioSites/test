@@ -3,7 +3,7 @@ try {
 
  botao.forEach((e) => {
     
-    e.addEventListener("click", function(event){
+    e.addEventListener("pointerup", function(event){
         
         let indiceBtn =  event.target;
         let indice = Array.from(botao).indexOf(indiceBtn);

@@ -7,7 +7,7 @@
         
         if(empty($preco) || empty($quant) || empty($preco)){
             header('location: user.php');
-        }else{
+        }else {
 
         $arquivo = "dados.json";
         $dadosAtuais = [];
@@ -17,17 +17,26 @@
             $dadosAtuais = json_decode($conteudoJson, true);
         }
 
-        $dadosAtuais[] = [
-            "preco" => $preco,
-            "nome" => $nome,
-            "quant" => $quant
-        ];
+        
+       
+            if($dadosAtuais['nome'] != $nome){
 
-        $novoConteudoJson = json_encode($dadosAtuais, JSON_PRETTY_PRINT);
-        file_put_contents($arquivo, $novoConteudoJson);
+                $dadosAtuais[] = [
+                "preco" => $preco,
+                "nome" => $nome,
+                "quant" => $quant
+                ];
+                $novoConteudoJson = json_encode($dadosAtuais, JSON_PRETTY_PRINT);
+                file_put_contents($arquivo, $novoConteudoJson);
 
     
-        header("Location: user.php");
+
+                
+            }else{
+                header('location: user.php');
+            }
+        
+          header("Location: user.php");
     
     }
     }else{
